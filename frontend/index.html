@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futures War — Imaginez le futur de Marseille</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Futures War</h1>
+            <p class="subtitle">Imaginez le futur de Marseille avec l'IA</p>
+        </header>
+
+        <main>
+            <!-- Catégorie -->
+            <div class="form-group">
+                <label for="category">Thématique</label>
+                <select id="category">
+                    <option value="se_loger">Se loger</option>
+                    <option value="se_deplacer">Se déplacer</option>
+                    <option value="manger">Manger</option>
+                    <option value="se_divertir">Se divertir</option>
+                    <option value="acces_nature" selected>Accès Nature</option>
+                    <option value="travailler">Travailler</option>
+                </select>
+            </div>
+
+            <!-- Input texte -->
+            <div class="form-group">
+                <label for="text-input">Décrivez votre vision du futur</label>
+                <textarea
+                    id="text-input"
+                    rows="3"
+                    placeholder="Ex : Je voudrais des jardins suspendus au-dessus du Vieux-Port avec des drones qui livrent des courses..."
+                ></textarea>
+            </div>
+
+            <!-- Boutons -->
+            <div class="actions">
+                <button id="btn-mic" class="btn btn-mic" title="Enregistrer un audio">
+                    🎤 Parler
+                </button>
+                <button id="btn-generate" class="btn btn-primary">
+                    Imaginer le futur
+                </button>
+            </div>
+
+            <!-- Indicateur micro -->
+            <div id="mic-status" class="mic-status hidden">
+                <span class="rec-dot"></span>
+                <span id="mic-timer">0s</span>
+                <button id="btn-mic-stop" class="btn btn-small">⏹ Stop</button>
+            </div>
+
+            <!-- Loader -->
+            <div id="loader" class="loader hidden">
+                <div class="spinner"></div>
+                <p id="loader-text">Génération en cours…</p>
+            </div>
+
+            <!-- Erreur -->
+            <div id="error" class="error hidden"></div>
+
+            <!-- Résultat -->
+            <div id="result" class="result hidden">
+                <img id="result-image" alt="Image du futur de Marseille" />
+                <div class="result-meta">
+                    <div class="meta-block">
+                        <strong>Votre description :</strong>
+                        <p id="result-original"></p>
+                    </div>
+                    <div class="meta-block">
+                        <strong>Prompt optimisé :</strong>
+                        <p id="result-enriched"></p>
+                    </div>
+                    <div class="meta-row">
+                        <span id="result-source" class="badge"></span>
+                        <span id="result-category" class="badge"></span>
+                        <span id="result-time" class="badge"></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Futures War — La Plateforme × Agence LVLUP — Mars 2026</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

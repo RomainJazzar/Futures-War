@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      # Defaults — override via .env file or Dockploy env vars
+      GPU_URL: ${GPU_URL:-http://37.26.187.4:8000}
+      GPU_TOKEN: ${GPU_TOKEN:-tristanlovesia}
+      LLM_MODEL: ${LLM_MODEL:-llama3.1:8b}
+      LLM_MODEL_FALLBACK: ${LLM_MODEL_FALLBACK:-llama3.2:1b}
+      IMAGE_MODEL: ${IMAGE_MODEL:-Tongyi-MAI/Z-Image-Turbo}
+      IMAGE_WIDTH: ${IMAGE_WIDTH:-1024}
+      IMAGE_HEIGHT: ${IMAGE_HEIGHT:-1024}
+      STT_TIMEOUT: ${STT_TIMEOUT:-30.0}
+      LLM_TIMEOUT: ${LLM_TIMEOUT:-30.0}
+      IMAGE_TIMEOUT: ${IMAGE_TIMEOUT:-90.0}
+    env_file:
+      - path: .env
+        required: false
+    restart: unless-stopped
+
+  # Uncomment for local dev: live-reload frontend from host
+  # app-dev:
+  #   build: .
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/app/static
+  #   env_file:
+  #     - .env
+  #   restart: unless-stopped

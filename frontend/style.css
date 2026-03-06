@@ -1,0 +1,291 @@
+/* ── Futures War — Base Styles ─────────────────────
+   Rooney : personnalise à ta guise, ce sont les fondations.
+   Palette inspirée du brief LVLUP : teal + dark + blanc.
+*/
+
+:root {
+    --color-primary: #00b4d8;
+    --color-primary-dark: #0096b7;
+    --color-bg: #f5f7fa;
+    --color-surface: #ffffff;
+    --color-text: #1e293b;
+    --color-text-muted: #64748b;
+    --color-error: #ef4444;
+    --color-success: #10b981;
+    --radius: 12px;
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ──────────────────────────────── */
+
+header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+/* ── Form ────────────────────────────────── */
+
+main {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 6px;
+    color: var(--color-text);
+}
+
+select, textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--color-surface);
+    transition: border-color 0.2s;
+}
+
+select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ── Buttons ─────────────────────────────── */
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    flex: 1;
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-dark);
+}
+
+.btn-primary:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+}
+
+.btn-mic {
+    background: var(--color-surface);
+    border: 2px solid #e2e8f0;
+    color: var(--color-text);
+}
+
+.btn-mic:hover {
+    border-color: var(--color-primary);
+}
+
+.btn-mic.recording {
+    border-color: var(--color-error);
+    background: #fef2f2;
+    animation: pulse 1.5s infinite;
+}
+
+.btn-small {
+    padding: 6px 14px;
+    font-size: 0.875rem;
+    background: var(--color-surface);
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* ── Mic status ──────────────────────────── */
+
+.mic-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: #fef2f2;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    font-size: 0.875rem;
+}
+
+.rec-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--color-error);
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+/* ── Loader ──────────────────────────────── */
+
+.loader {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #e2e8f0;
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loader p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+/* ── Error ───────────────────────────────── */
+
+.error {
+    background: #fef2f2;
+    color: var(--color-error);
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--color-error);
+}
+
+/* ── Result ──────────────────────────────── */
+
+.result {
+    margin-top: 24px;
+}
+
+#result-image {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: block;
+}
+
+.result-meta {
+    margin-top: 16px;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.meta-block {
+    margin-bottom: 12px;
+}
+
+.meta-block strong {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.meta-block p {
+    margin-top: 4px;
+    font-size: 0.95rem;
+}
+
+.meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: #f1f5f9;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+/* ── Footer ──────────────────────────────── */
+
+footer {
+    text-align: center;
+    padding: 24px 0 8px;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+}
+
+/* ── Utility ─────────────────────────────── */
+
+.hidden {
+    display: none !important;
+}
